@@ -1,0 +1,18 @@
+DAY 1
+Date: 21-09-2026
+Work Completed:
+-Confirmed Android Studio Project Configuration
+-Selected SQLite as the application's local database technology
+-Created the PantryItem Java model
+-Created DatabaseHelper using SQLiteOpenHelper
+-Created the pantry database table
+-Implemented CREATE functionality for pantry items
+-Implemented READ functionality for pantry items
+-Implemented UPDATE functionality for pantry items
+-Implemented DELETE functionality for pantry items
+-Created the Pantry RecyclerView
+-Created a custom PantryAdapter
+-Created the ADD/EDIT Ingredient Screen
+-Added input validation
+-Tested database persistence after closing and reopening the application
+-Committed development progress to GitHub
