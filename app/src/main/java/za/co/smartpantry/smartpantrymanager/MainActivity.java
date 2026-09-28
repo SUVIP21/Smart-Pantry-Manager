@@ -3,6 +3,7 @@ package za.co.smartpantry.smartpantrymanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -11,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewPantry;
@@ -25,14 +24,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         databaseHelper = new DatabaseHelper(this);
 
+        // Initialize ALL views before calling methods that reference them
         recyclerViewPantry = findViewById(R.id.recyclerViewPantry);
-
         buttonAddIngredient = findViewById(R.id.buttonAddIngredient);
+        textEmptyPantry = findViewById(R.id.textEmptyPantry);
+
+        Button buttonMainPantry = findViewById(R.id.buttonMainPantry);
+        Button buttonMainRecipes = findViewById(R.id.buttonMainRecipes);
+        Button buttonMainSettings = findViewById(R.id.buttonMainSettings);
 
         recyclerViewPantry.setLayoutManager(new LinearLayoutManager(this));
 
@@ -44,9 +47,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        loadPantryItems();
+        buttonMainPantry.setOnClickListener(v -> {
 
-        textEmptyPantry = findViewById(R.id.textEmptyPantry);
+        });
+
+        buttonMainRecipes.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivity.class);
+            startActivity(intent);
+        });
+
+        buttonMainSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        // Load items AFTER views are initialized
+        loadPantryItems();
     }
 
     @Override
